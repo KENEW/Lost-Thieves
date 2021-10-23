@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class OpenScene : MonoBehaviour
 {
+    bool _sceneLoaded;
+
     // Start is called before the first frame update
     void Start()
     {
 
     }
 
-    public void GameStart()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        GameSceneManager.GSM.LoadSceneAsync("Scene2");
-        GameSceneManager.GSM.UnLoadSceneAsync("0_Title");
+        if(collision.gameObject.name == "Character")
+        {
+            if (_sceneLoaded == false)
+            {
+                SceneLoad();
+                _sceneLoaded = true;
+            }
+        }
+    }
+
+    public void SceneLoad()
+    {
+        GameSceneManager.GSM.SetGameOverType(GameOverType.¾À3½Ã°£ÃÊ°ú);
+        GameSceneManager.GSM.LoadSceneAsync("5_GameOver");
+        GameSceneManager.GSM.UnLoadSceneAsync("SceneThree");
+        GameSceneManager.GSM.UnLoadSceneAsync("SceneThreeShowThieve");
     }
 }
