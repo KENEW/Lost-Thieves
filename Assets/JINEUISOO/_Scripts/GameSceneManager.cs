@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum GameOverType { 씬3시간초과, 잘못된사람잡음 }
+
 public class GameSceneManager : MonoBehaviour
 {
 
@@ -39,11 +41,19 @@ public class GameSceneManager : MonoBehaviour
 
     [SerializeField] List<AsyncOperation> _scenesLoaded = new List<AsyncOperation>();
 
-
     [SerializeField] ObjectType _playerSelectObjectType;
     [SerializeField] ObjectType _answerObjectType;
-
+    [SerializeField] GameOverType _typeOfGameOver;
+    [SerializeField] int _howManyNumberWeLooped;
     [SerializeField] float _totalScore;
+
+    #region Interfaeces
+
+    public void SetHowManyWeLooped(int value) => _howManyNumberWeLooped = value;
+    public int GetHowManyWeLooped() => _howManyNumberWeLooped;
+
+    public void SetGameOverType(GameOverType type) => _typeOfGameOver = type;
+    public GameOverType GetGameOverType() => _typeOfGameOver;
 
     public void SetTotalScore(float value) => _totalScore = value;
     public float GetTotalScore() => _totalScore;
@@ -53,6 +63,8 @@ public class GameSceneManager : MonoBehaviour
 
     public void SetAnswerObjectType(ObjectType type) => _answerObjectType = type;
     public ObjectType GetAnswerObjectType() => _answerObjectType;
+
+    #endregion
 
     private void Awake()
     {
@@ -80,6 +92,7 @@ public class GameSceneManager : MonoBehaviour
             CheckSceneLoaded();
         }
 
+#if UNITY_EDITOR
         if(_testLoad)
         {
             _testLoad = false;
@@ -91,11 +104,12 @@ public class GameSceneManager : MonoBehaviour
             _testUnload = false;
             UnLoadSceneAsync("SceneThree");
         }
+#endif
     }
 
     void RealGameStartInitialization()
     {
-        LoadSceneAsync("SceneThree");
+        LoadSceneAsync("0_Title");
     }
 
     void ChangeToFalseSceneLoadBool()

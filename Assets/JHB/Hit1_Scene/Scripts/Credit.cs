@@ -7,14 +7,15 @@ public class Credit : MonoBehaviour
     AudioSource audioSource;
     [SerializeField] GameObject texts;
     [SerializeField] float speed;
+    [SerializeField] Vector3 originalPos;
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
+        texts.transform.position = originalPos;
         audioSource = GetComponent<AudioSource>();
         audioSource.Play();
         StartCoroutine(GoUP());
     }
-
     IEnumerator GoUP()
     {
         while(true)
@@ -25,7 +26,6 @@ public class Credit : MonoBehaviour
             yield return new WaitForSeconds(speed);
         }
     }
-
     private void OnDisable()
     {
         audioSource.Stop();

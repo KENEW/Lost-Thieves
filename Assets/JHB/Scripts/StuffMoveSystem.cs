@@ -133,6 +133,7 @@ public class StuffMoveSystem : MonoBehaviour
     }
     void SetLevel()
     {
+        level++;
         // Load from singleton class
     }
     void SetAnswer(Stuff s)
