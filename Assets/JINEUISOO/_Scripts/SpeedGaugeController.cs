@@ -8,6 +8,8 @@ public class SpeedGaugeController : MonoBehaviour
     [SerializeField] float _addSpeedGaugePowerMulty;
     [SerializeField] float _minusGaugePowerMulty;
     [SerializeField] float _speedGagueValue;
+    [Range (0.5f, 1.0f)]
+    [SerializeField] float _speedGaugeSecondValue = 0.65f;
     internal float SpeedGagueValue => _speedGagueValue;
 
     [SerializeField] Image _gaugeMovingImage;
@@ -33,12 +35,12 @@ public class SpeedGaugeController : MonoBehaviour
         // 키 한번에 한번만 충전되어야 한다.
         if (_keyDown == true && _keyUp == true)
         {
-            _speedGagueValue += 1 * _addSpeedGaugePowerMulty;
+            SetSpeedGaugeValue();
             _keyDown = false;
             _keyUp = false;
         }
-        _speedGagueValue -= 1 * _minusGaugePowerMulty;
 
+        _speedGagueValue -= 1 * _minusGaugePowerMulty;
         UpdateSpeedGauge();
     }
 
@@ -46,5 +48,15 @@ public class SpeedGaugeController : MonoBehaviour
     {
         _speedGagueValue = Mathf.Clamp(_speedGagueValue, 0f, 1f);
         _gaugeMovingImage.fillAmount = _speedGagueValue;
+    }
+
+    void SetSpeedGaugeValue()
+    {
+        
+        if(_speedGagueValue > 0.7f)
+        _speedGagueValue += _speedGaugeSecondValue * _addSpeedGaugePowerMulty;
+        if(_speedGagueValue < 0.7f)
+        _speedGagueValue += 1f * _addSpeedGaugePowerMulty;
+
     }
 }

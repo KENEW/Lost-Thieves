@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class LevelGroundSpawner : MonoBehaviour
 {
-    
+    [SerializeField] GameObject _basicPlatform;
+
     [SerializeField] GameObject[] _difficulty01PlatformPrefab;
     [SerializeField] Vector3 _movePlatformPos;
     
@@ -16,13 +17,20 @@ public class LevelGroundSpawner : MonoBehaviour
 
     void Start()
     {
-        InstantiatePlatform();
         Initialization();
+        //InstantiatePlatform();
     }
 
     void Initialization()
     {
         _colliderSize = this.transform.GetComponent<BoxCollider2D>().size;
+        /*
+        for(int ia = 0; ia < 4; ia++)
+        {
+            Vector2 tempVector2 = new Vector2(-20f + ia * 10f , -4.5f);
+            InstantiatePlatform(tempVector2, _basicPlatform);
+        }
+    */
     }
 
     void Update()
@@ -48,19 +56,40 @@ public class LevelGroundSpawner : MonoBehaviour
     void InstantiatePlatform()
     {
         int tempIntPrefabNumber = GetRandomPrefabNumber(_difficulty01PlatformPrefab);
-        Vector2 tempVector2PlatformColiderSize = _difficulty01PlatformPrefab[tempIntPrefabNumber].GetComponent<BoxCollider2D>().size;
 
+        Vector2 tempVector2PlatformColiderSize = GetBoxCollider2DSize(tempIntPrefabNumber);
         float tempFloatInstPosX = tempVector2PlatformColiderSize.x * 1.5f + _colliderSize.x * 0.5f;
-        float tempFloatInstPosY = _cameraSize.y * 0.5f + _colliderSize.y * 0.5f * -1f;
+        float tempFloatInstPosY = (_cameraSize.y * 0.5f - tempVector2PlatformColiderSize.y * 0.5f) * -1f;
+        Vector2 tempVector2InstantiatePosition = new Vector2(tempFloatInstPosX, tempFloatInstPosY);
+         
+        InnerFInstantiatePlatform(tempIntPrefabNumber, tempVector2InstantiatePosition);
+    }
 
-        Vector3 tempVector2InstantiatePosition = new Vector2(tempFloatInstPosX, tempFloatInstPosY);
-        GameObject tempGOPlatfrom = Instantiate(_difficulty01PlatformPrefab[tempIntPrefabNumber], tempVector2InstantiatePosition, Quaternion.identity, this.transform);
-        tempGOPlatfrom.name = _platformName;
-        tempGOPlatfrom.GetComponent<TransfromMoveTo>().SetMovePos(_movePlatformPos);
+    void InstantiatePlatform(Vector2 adjustPosition, GameObject platform)
+    {
+        Vector2 tempVector2PlatformColiderSize = platform.GetComponent<BoxCollider2D>().size;
+
+        InnerFInstantiatePlatform(adjustPosition, platform);
     }
 
     int GetRandomPrefabNumber(GameObject[] difficultySet)
     {
         return Random.Range(0, difficultySet.Length);
+    }
+
+    Vector2 GetBoxCollider2DSize(int prefabNumber) => _difficulty01PlatformPrefab[prefabNumber].GetComponent<BoxCollider2D>().size;
+
+    void InnerFInstantiatePlatform(int prefabNumber, Vector2 instantiatePos)
+    {
+        GameObject tempGOPlatfrom = Instantiate(_difficulty01PlatformPrefab[prefabNumber], instantiatePos, Quaternion.identity, this.transform);
+        tempGOPlatfrom.name = _platformName;
+        tempGOPlatfrom.GetComponent<TransfromMoveTo>().SetMovePos(_movePlatformPos);
+    }
+
+    void InnerFInstantiatePlatform(Vector2 instantiatePos, GameObject platform)
+    {
+        GameObject tempGOPlatfrom = Instantiate(platform, instantiatePos, Quaternion.identity, this.transform);
+        tempGOPlatfrom.name = _platformName;
+        tempGOPlatfrom.GetComponent<TransfromMoveTo>().SetMovePos(_movePlatformPos);
     }
 }
