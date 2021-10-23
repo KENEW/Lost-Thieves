@@ -21,11 +21,10 @@ public class StuffMove : MonoBehaviour
         curPos = GetComponent<Transform>().position;
         
         GetComponent<Transform>().localScale *= MyStuff.Scale;
+        GetComponent<Transform>().Rotate(0f, 0f, MyStuff.Rotate);
         GetComponent<SpriteRenderer>().sprite = myStuff.Base.Sprite;
         targetPos = new Vector3(x, y, 0.5f);
         dirVec = (targetPos - curPos).normalized;
-
-        
     }
     public void Move()
     {

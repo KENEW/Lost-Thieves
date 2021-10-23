@@ -34,8 +34,8 @@ public class StuffMoveSystem : MonoBehaviour
         for (int i = 0; i < level; i++)
         {
             int index = UnityEngine.Random.Range(0, stuffs.Count);
-            var tmp = stuffs[index];
-            tmp.Init(level);
+            Stuff tmp = new Stuff(level);
+            tmp.Init(stuffs[index].Base);
             stuffsList.Add(tmp);
         }
         while (stuffsList.Count != 0)
@@ -72,7 +72,7 @@ public class StuffMoveSystem : MonoBehaviour
                 var x = UnityEngine.Random.Range(leftDown.position.x, rightUp.position.x);
                 var y = UnityEngine.Random.Range(leftDown.position.y, rightUp.position.y);
                 moves[index].Init(x, y, answerList[0]);
-                //Debug.Log(answerList[0].Base.Type);
+                
                 answerList.RemoveAt(0);
             }
         }
@@ -137,6 +137,7 @@ public class StuffMoveSystem : MonoBehaviour
     }
     void SetAnswer(Stuff s)
     {
+        Debug.Log($"{gameObject.name} : answer {s.Base.Type}");
         GameSceneManager.GSM.SetAnswerObjectType(s.Base.Type);
         // Set Answer into singleton class
     }
