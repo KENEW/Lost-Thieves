@@ -34,13 +34,13 @@ public class HitGauge : MonoBehaviour
     {
         hitScore = FindObjectOfType<HitScore>();
         curTime = Time.realtimeSinceStartup;
-        SetFeverLine();
+        //SetFeverLine();
     }
 
     private void SetFeverLine()
     {
         Vector3 feverPos = UtilLib.GetImagesize(hitGaugeOutImg.gameObject);
-        feverLineTrans.position = new Vector3(feverLineTrans.position.x, feverLineTrans.position.y + (feverPos.y * FeverRatio), feverLineTrans.position.z);
+        feverLineTrans.position = new Vector3(feverLineTrans.position.x + (feverPos.x * FeverRatio), feverLineTrans.position.y, feverLineTrans.position.z);
     }
 
     private void Update()
