@@ -29,7 +29,7 @@ public class SelectionSystem : MonoBehaviour
                 SetSelection();
                 OnSelectOver();
             }
-            curSelection = Mathf.Clamp(curSelection, 0, 4);
+            curSelection = Mathf.Clamp(curSelection, 0, 3);
             if (prevSelection != curSelection)
                 UpdateScrollSmooth(-0.17f + (0.45f * (float)curSelection));
         }

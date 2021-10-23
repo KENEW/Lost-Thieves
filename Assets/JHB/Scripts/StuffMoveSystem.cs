@@ -18,6 +18,7 @@ public class StuffMoveSystem : MonoBehaviour
     [SerializeField] float LimTime;
     [SerializeField] int level;
 
+    string message;
     public Action OnMoveOver;
     float curTime;
     List<Stuff> stuffsList = new List<Stuff>();
@@ -25,6 +26,9 @@ public class StuffMoveSystem : MonoBehaviour
 
     bool waitTime = true;
     float waitTimeInt = 6f;
+
+    public string Message { get => message; set => message = value; }
+
     // Start is called before the first frame update
     public void HandleStart()
     {
@@ -86,7 +90,7 @@ public class StuffMoveSystem : MonoBehaviour
             waitTimeInt -= Time.deltaTime;
             if(waitTimeInt > 5)
             {
-                startTimer.text = "나오는 사물을 기억하세요!";
+                startTimer.text = message;
             }
             else
             {

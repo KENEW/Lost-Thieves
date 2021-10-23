@@ -52,4 +52,12 @@ public class Credit : MonoBehaviour
     {
         audioSource.Stop();
     }
+    private void Update()
+    {
+        if(!audioSource.isPlaying && Application.isFocused)
+        {
+            FindObjectOfType<Button>().onClick.Invoke();
+        }
+
+    }
 }

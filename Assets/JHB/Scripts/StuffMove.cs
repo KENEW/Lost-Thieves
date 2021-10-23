@@ -32,7 +32,12 @@ public class StuffMove : MonoBehaviour
     }
     public void ChangeDir()
     {
-        dirVec *= -1;
+        var x = UnityEngine.Random.Range(-5, 5);
+        var y = UnityEngine.Random.Range(-3, 3);
+        targetPos = new Vector3(x, y, 0.5f);
+        curPos = GetComponent<Transform>().position;
+        dirVec = (targetPos - curPos).normalized;
+        //dirVec *= -1;
     }
     public void Init()
     {

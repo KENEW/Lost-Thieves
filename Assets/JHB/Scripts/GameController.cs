@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
         stuffMoveSystem.OnMoveOver += MoveOver;
         myAnimation.OnAnimOver += AnimOver;
         selectSystem.OnSelectOver += SelectOver;
+        stuffMoveSystem.Message = "사물을 기억하세요!";
     }
     // Update is called once per frame
     void Update()
@@ -51,6 +52,7 @@ public class GameController : MonoBehaviour
             myAnimation.gameObject.SetActive(false);
             stuffMoveSystem.gameObject.SetActive(true);
             stuffMoveSystem.MakeAnswer();
+            stuffMoveSystem.Message = "없어진 물건을 찾아보세요!";
         }
     }
     void SelectOver()

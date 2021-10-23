@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 58653e973cf2ffc4a8066bc555b65b87, type: 3}
-  m_Name: Cat
+  m_Name: Card 3
   m_EditorClassIdentifier: 
-  sprite: {fileID: 2747690628134850419, guid: a9716c16a44a94eed9b5c90fbf4d9bdd, type: 3}
-  type: 1
+  sprite: {fileID: 21300000, guid: f235d15b3b3091c4cbf4f9f5177b19a7, type: 3}
+  type: 3
