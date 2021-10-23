@@ -28,7 +28,7 @@ public class Credit : MonoBehaviour
             var tmp = texts.transform.position;
             tmp.y = tmp.y + speed;
             texts.transform.position = tmp;
-            float size = end.GetComponent<RectTransform>().position.y * -30 / 100;
+            float size = end.GetComponent<RectTransform>().position.y * -3000 / 10000;
             size = Mathf.Clamp(size, 0f, 1f);
             audioSource.volume = size;
             yield return new WaitForSeconds(speed);
@@ -37,10 +37,5 @@ public class Credit : MonoBehaviour
     private void OnDisable()
     {
         audioSource.Stop();
-    }
-
-    private void Update()
-    {
-        Debug.Log(end.GetComponent<RectTransform>().position.y);
     }
 }
