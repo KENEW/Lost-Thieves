@@ -11,4 +11,6 @@ public class SceneThreeGameManager : MonoBehaviour
         if(_gameInitialization)
         GameSceneManager.GSM.LoadSceneAsync("SceneThreeShowThieve", setLoadSceneToCenter : false);
     }
+
+
 }

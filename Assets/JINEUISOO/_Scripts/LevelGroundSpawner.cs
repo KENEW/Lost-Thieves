@@ -7,6 +7,7 @@ public class LevelGroundSpawner : MonoBehaviour
     [SerializeField] GameObject _basicPlatform;
 
     [SerializeField] GameObject[] _difficulty01PlatformPrefab;
+    [SerializeField] GameObject[] _basicObjects;
     [SerializeField] Vector3 _movePlatformPos;
     
     [SerializeField] string _platformName;
@@ -24,13 +25,15 @@ public class LevelGroundSpawner : MonoBehaviour
     void Initialization()
     {
         _colliderSize = this.transform.GetComponent<BoxCollider2D>().size;
-        /*
-        for(int ia = 0; ia < 4; ia++)
+        SetBasicObjectsMoveSpeed();
+
+        void SetBasicObjectsMoveSpeed()
         {
-            Vector2 tempVector2 = new Vector2(-20f + ia * 10f , -4.5f);
-            InstantiatePlatform(tempVector2, _basicPlatform);
+            foreach(GameObject go in _basicObjects)
+            {
+                go.GetComponent<TransfromMoveTo>().SetMovePos(_movePlatformPos);
+            }
         }
-    */
     }
 
     void Update()
