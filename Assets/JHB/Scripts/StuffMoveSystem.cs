@@ -28,6 +28,7 @@ public class StuffMoveSystem : MonoBehaviour
     // Start is called before the first frame update
     public void HandleStart()
     {
+        SetLevel();
         timeText.text = "10";
         startTimer.gameObject.SetActive(true);
         for (int i = 0; i < level; i++)
@@ -60,6 +61,8 @@ public class StuffMoveSystem : MonoBehaviour
 
         var answer = answerList[0];
         answerList.RemoveAt(0);
+
+        SetAnswer();
 
         while (answerList.Count != 0)
         {
@@ -127,5 +130,13 @@ public class StuffMoveSystem : MonoBehaviour
         {
             stuffMove.ChangeDir();
         }
+    }
+    void SetLevel()
+    {
+        // Load from singleton class
+    }
+    void SetAnswer()
+    {
+        // Set Answer into singleton class
     }
 }

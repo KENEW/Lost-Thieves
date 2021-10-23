@@ -49,10 +49,11 @@ public class GameController : MonoBehaviour
     {
         if(state == State.Night1)
         {
+            state = State.Day2;
             myAnimation.gameObject.SetActive(false);
             stuffMoveSystem.gameObject.SetActive(true);
             stuffMoveSystem.MakeAnswer();
-            state = State.Day2;
+            
         }
     }
     void SelectOver()

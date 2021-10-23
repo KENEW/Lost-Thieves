@@ -18,7 +18,9 @@ public class MyAnimation : MonoBehaviour
     }
     public void HandleUpdate()
     {
-        curTime += Time.deltaTime;
+        int prevIndex = curIndex;
+        if (ui.color.a >= 1)
+            curTime += Time.deltaTime;
         if(curTime >= passTime)
         {
             curIndex++;
@@ -27,8 +29,57 @@ public class MyAnimation : MonoBehaviour
                 curIndex = 0;
                 OnAnimOver();
             }
-            ui.sprite = sprites[curIndex];
+            else
+            {
+                curTime = 0;
+                ChangeImage();
+            }
+            //ui.sprite = sprites[curIndex];
+        }
+    }
+
+    /*public void Update()
+    {
+        int prevIndex = curIndex;
+        if(ui.color.a >= 1)
+            curTime += Time.deltaTime;
+        if (curTime >= passTime)
+        {
+            curIndex++;
+            if (curIndex >= sprites.Count)
+            {
+                curIndex = 0;
+                OnAnimOver();
+            }
+            //ui.sprite = sprites[curIndex];
+
+        }
+        if (prevIndex != curIndex)
+        {
+            ChangeImage();
             curTime = 0;
+        }
+    }*/
+    void ChangeImage()
+    {
+        StartCoroutine(Fadeaway());
+    }
+    IEnumerator Fadeaway()
+    {
+        while(ui.color.a > 0)
+        {
+            var tmp = ui.color.a - 0.01f;
+            ui.color = new Color(ui.color.r, ui.color.g, ui.color.b, tmp);
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        ui.sprite = sprites[curIndex];
+
+        while (ui.color.a < 1)
+        {
+            var tmp = ui.color.a + 0.01f;
+            ui.color = new Color(ui.color.r, ui.color.g, ui.color.b, tmp);
+            yield return new WaitForSeconds(0.01f);
         }
     }
 }
