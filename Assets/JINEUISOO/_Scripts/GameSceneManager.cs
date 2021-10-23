@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum GameOverType { ¾À3½Ã°£ÃÊ°ú, Àß¸øµÈ»ç¶÷ÀâÀ½ }
+public enum GameOverType { ì”¬3ì‹œê°„ì´ˆê³¼, ìž˜ëª»ëœì‚¬ëžŒìž¡ìŒ }
 
 public class GameSceneManager : MonoBehaviour
 {
@@ -48,10 +48,11 @@ public class GameSceneManager : MonoBehaviour
     [SerializeField] float _totalScore;
 
     [SerializeField] SCO_LevelSetting[] _levelSettings;
-    internal SCO_LevelSetting[] GetLevelSettings => _levelSettings;
-    internal SCO_LevelSetting GetLevelSetting(int number) => _levelSettings[number];
 
     #region Interfaeces
+
+    internal SCO_LevelSetting[] GetLevelSettings => _levelSettings;
+    internal SCO_LevelSetting GetLevelSetting(int number) => _levelSettings[number];
 
     public void SetHowManyWeLooped(int value) => _howManyNumberWeLooped = value;
     public int GetHowManyWeLooped() => _howManyNumberWeLooped;

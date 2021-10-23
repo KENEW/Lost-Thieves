@@ -30,9 +30,12 @@ public class HitGauge : MonoBehaviour
     private float decreaseGauge = 0.5f;
 
     private HitScore hitScore;
+    private TimeGauge timeGauge;
+    
     private void Start()
     {
         hitScore = FindObjectOfType<HitScore>();
+        timeGauge = FindObjectOfType<TimeGauge>();
         curTime = Time.realtimeSinceStartup;
         //SetFeverLine();
     }
@@ -48,7 +51,9 @@ public class HitGauge : MonoBehaviour
         GaugeUpdate();
         FeverCheck();
         DecreaseGauge();
-        IncreaseGauge();
+        
+        if (!timeGauge.GetTimeOver()) 
+            IncreaseGauge();
     }
 
     private void FeverCheck()
