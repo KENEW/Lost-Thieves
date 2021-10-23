@@ -20,7 +20,13 @@ public class TimerFeature : MonoBehaviour
 
     void Initialization()
     {
+        CheckDifficulty();
         _innerTime = _startTime;
+    }
+
+    void CheckDifficulty()
+    {
+        _startTime = GameSceneManager.GSM.GetLevelSetting(GameSceneManager.GSM.GetHowManyWeLooped()).StartTIme;
     }
 
     // Update is called once per frame

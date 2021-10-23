@@ -22,6 +22,8 @@ public class Title : MonoBehaviour
     }
     private void GameStart()
     {
+        GameSceneManager.GSM.SetHowManyWeLooped(0);
+        GameSceneManager.GSM.SetTotalScore(0f);
         GameSceneManager.GSM.LoadSceneAsync("Scene2");
         GameSceneManager.GSM.UnLoadSceneAsync("0_Title");
     }

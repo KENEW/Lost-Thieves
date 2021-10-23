@@ -27,6 +27,12 @@ public class CharacterMovement : MonoBehaviour
     {
         _characterRB = _characterImageGO.GetComponent<Rigidbody2D>();
         _characterImageGO.transform.position = new Vector2(0f, -3.5f);
+        Initialization();
+    }
+
+    void Initialization()
+    {
+
     }
 
     // Update is called once per frame

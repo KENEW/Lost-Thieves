@@ -5,13 +5,17 @@ using UnityEngine;
 public class Credit : MonoBehaviour
 {
     AudioSource audioSource;
-    [SerializeField] GameObject texts;
+    [SerializeField] RectTransform texts;
     [SerializeField] float speed;
-    [SerializeField] Vector3 originalPos;
+    Vector3 originalPos;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        originalPos = texts.localPosition;
+    }
     void OnEnable()
     {
-        texts.transform.position = originalPos;
+        texts.localPosition = originalPos;
         audioSource = GetComponent<AudioSource>();
         audioSource.Play();
         StartCoroutine(GoUP());

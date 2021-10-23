@@ -3212,7 +3212,7 @@ MonoBehaviour:
   - {fileID: 474175495}
   - {fileID: 648223115}
   LimTime: 10
-  level: 3
+  level: 2
 --- !u!1 &1456035391
 GameObject:
   m_ObjectHideFlags: 0

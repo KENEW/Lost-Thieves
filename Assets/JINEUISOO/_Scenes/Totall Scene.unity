@@ -154,13 +154,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _testLoad: 0
   _testUnload: 0
-  _gameStartInitialization: 0
+  _gameStartInitialization: 1
   _isAllScenesLoaded: 0
   _playerSelectObjectType: 0
   _answerObjectType: 0
   _typeOfGameOver: 0
   _howManyNumberWeLooped: 0
   _totalScore: 0
+  _levels:
+  - {fileID: 11400000, guid: 4b4477de8115874458222146341993e6, type: 2}
+  - {fileID: 11400000, guid: 29c5caeee0660b14eae05d591816cfad, type: 2}
+  - {fileID: 11400000, guid: 1ff10e2d0fd77ab4a8e9d33fd7a501cc, type: 2}
 --- !u!4 &1984268514
 Transform:
   m_ObjectHideFlags: 0
