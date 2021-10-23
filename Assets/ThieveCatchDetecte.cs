@@ -8,7 +8,9 @@ public class ThieveCatchDetecte : MonoBehaviour
     {
         if(collision.gameObject.name == "Character")
         {
-            Debug.Log("asdfasdf");
+            GameSceneManager.GSM.LoadSceneAsync("4_Hit");
+            GameSceneManager.GSM.UnLoadSceneAsync("SceneThreeShowThieve");
+            GameSceneManager.GSM.UnLoadSceneAsync("SceneThree");
         }
     }
 }
