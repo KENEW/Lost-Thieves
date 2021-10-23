@@ -40,8 +40,13 @@ public class GameSceneManager : MonoBehaviour
     [SerializeField] List<AsyncOperation> _scenesLoaded = new List<AsyncOperation>();
 
 
-    public ObjectType _playerSelectObjectType;
-    public ObjectType _answerObjectType;
+    [SerializeField] ObjectType _playerSelectObjectType;
+    [SerializeField] ObjectType _answerObjectType;
+
+    [SerializeField] float _totalScore;
+
+    public void SetTotalScore(float value) => _totalScore = value;
+    public float GetTotalScore() => _totalScore;
 
     public void SetPlayerSelectObjectType(ObjectType type) => _playerSelectObjectType = type;
     public ObjectType GetPlayerSelectObjectType() => _playerSelectObjectType;
@@ -90,7 +95,7 @@ public class GameSceneManager : MonoBehaviour
 
     void RealGameStartInitialization()
     {
-
+        LoadSceneAsync("SceneThree");
     }
 
     void ChangeToFalseSceneLoadBool()
@@ -112,10 +117,11 @@ public class GameSceneManager : MonoBehaviour
     }
 
 
-    internal void LoadSceneAsync(string sceneName)
+    internal void LoadSceneAsync(string sceneName, bool setLoadSceneToCenter = true)
     {
         SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         ChangeToFalseSceneLoadBool();
+        if(setLoadSceneToCenter)
         StartCoroutine(WaitUntilScenesLoadedAndSetActiveScene(sceneName));
     }
 

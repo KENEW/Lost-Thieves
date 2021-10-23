@@ -6,40 +6,43 @@ using UnityEngine.UI;
 
 public class Title : MonoBehaviour
 {
-    public Button startBt;
-    public Button creditBt;
-    public Button ExitBt;
+    [SerializeField] Button startBt;
+    [SerializeField] Button creditBt;
+    [SerializeField] Button ExitBt;
+    [SerializeField] Button creditpanel;
 
+    [SerializeField] GameObject title;
+    [SerializeField] GameObject credit;
     private void Start()
     {
         startBt.onClick.AddListener(GameStart);
         creditBt.onClick.AddListener(CreditOpen);
         ExitBt.onClick.AddListener(GameExit);
+        creditpanel.onClick.AddListener(CreditClose);
     }
-
     private void GameStart()
     {
         GameSceneManager.GSM.LoadSceneAsync("Scene2");
         GameSceneManager.GSM.UnLoadSceneAsync("0_Title");
     }
-
     private void CreditOpen()
     {
-        
+        title.SetActive(false);
+        credit.SetActive(true);
     }
-
     private void CreditClose()
     {
-        
+        title.SetActive(true);
+        credit.SetActive(false);
     }
-
     private void GameExit()
     {
-#if UNITY_EDITOR
+        Application.Quit();
+    #if UNITY_EDITOR
               
-      #endif
-#if UNITY_STANDALONE_WIN
+          #endif
+    #if UNITY_STANDALONE_WIN
         
-#endif
+    #endif
     }
 }
