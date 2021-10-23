@@ -35,14 +35,15 @@ public class GameController : MonoBehaviour
     {
         if(state == State.Day1)
         {
+            state = State.Night1;
             stuffMoveSystem.gameObject.SetActive(false);
             myAnimation.gameObject.SetActive(true);
-            state = State.Night1;
         }
         else if(state == State.Day2)
         {
-            selectSystem.gameObject.SetActive(true);
             state = State.Select;
+            selectSystem.gameObject.SetActive(true);
+            StartCoroutine(selectSystem.DoScreenUp());
         }
     }
     void AnimOver()
