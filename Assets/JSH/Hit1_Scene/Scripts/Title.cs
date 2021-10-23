@@ -12,11 +12,15 @@ public class Title : MonoBehaviour
 
     private void Start()
     {
-        throw new NotImplementedException();
+        startBt.onClick.AddListener(GameStart);
+        creditBt.onClick.AddListener(CreditOpen);
+        ExitBt.onClick.AddListener(GameExit);
     }
 
     private void GameStart()
     {
+        GameSceneManager.GSM.LoadSceneAsync("Scene2");
+        GameSceneManager.GSM.UnLoadSceneAsync("0_Tilte");
     }
 
     private void CreditOpen()
