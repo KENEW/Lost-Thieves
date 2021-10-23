@@ -133,8 +133,8 @@ public class StuffMoveSystem : MonoBehaviour
     }
     void SetLevel()
     {
-        level++;
         // Load from singleton class
+        level += GameSceneManager.GSM.GetHowManyWeLooped();
     }
     void SetAnswer(Stuff s)
     {
