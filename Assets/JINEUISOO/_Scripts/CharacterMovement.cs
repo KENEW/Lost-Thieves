@@ -20,6 +20,8 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] float _jumpDisableTime;
     [SerializeField] float _jumpPower;
 
+    [SerializeField] GameObject _jumpSound;
+
     Rigidbody2D _characterRB;
 
     // Start is called before the first frame update
@@ -52,7 +54,7 @@ public class CharacterMovement : MonoBehaviour
         
         tempFloatXPos = _movingSpeedMulti * tempFloatXPos;
 
-        speedMeter.text = tempFloatXPos.ToString();
+        //speedMeter.text = tempFloatXPos.ToString();
 
         Vector2 tempVector2CharacterPos = new Vector2(tempFloatXPos, _characterRB.velocity.y);
 
@@ -75,6 +77,7 @@ public class CharacterMovement : MonoBehaviour
             _jumpAble = false;
             _jumpDisabled = true;
             StartCoroutine(SetJumpDisableToTrue(_jumpDisableTime));
+            Instantiate(_jumpSound);
         }
 
     }
