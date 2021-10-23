@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum GameOverType { ¾À3½Ã°£ÃÊ°ú, Àß¸øµÈ»ç¶÷ÀâÀ½ }
+public enum GameOverType { ì”¬3ì‹œê°„ì´ˆê³¼, ì˜ëª»ëœì‚¬ëŒì¡ìŒ }
 
 public class GameSceneManager : MonoBehaviour
 {

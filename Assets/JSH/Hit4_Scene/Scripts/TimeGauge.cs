@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class TimeGauge : MonoBehaviour
 {
-    public Image timeGaugeImg;
+    [SerializeField] Image timeGaugeImg;
     [SerializeField] private GameObject fadePanel;
     [SerializeField] private GameObject timeOverPanel;
     
@@ -16,6 +16,8 @@ public class TimeGauge : MonoBehaviour
     private float maxTime;
 
     private float startTime;
+
+    private bool isTimeOver = false;
 
     private void Start()
     {
@@ -38,8 +40,10 @@ public class TimeGauge : MonoBehaviour
         {
             if (curTime - 1.0f < 0)
             {
+                isTimeOver = true;
                 fadePanel.SetActive(true);
                 timeOverPanel.SetActive(true);
+                timeGaugeImg.fillAmount = 0.00000f;
                 Invoke("SceneEnd", 2.0f);
             }
             else
@@ -60,6 +64,15 @@ public class TimeGauge : MonoBehaviour
     {
         maxTime = curTime = time;
     }
+
+    /// <summary>
+    /// 시간을 초과한지 체크합니다.
+    /// </summary>
+    /// <returns></returns>
+    public bool GetTimeOver()
+    {
+        return isTimeOver;
+    }
     
     /// <summary>
     /// 게이지 이미지를 업데이트 합니다.
@@ -74,6 +87,7 @@ public class TimeGauge : MonoBehaviour
     /// </summary>
     private void SceneEnd()
     {
+        GameSceneManager.GSM.SetHowManyWeLooped(GameSceneManager.GSM.GetHowManyWeLooped() + 1);
         GameSceneManager.GSM.LoadSceneAsync("Scene2");
         GameSceneManager.GSM.UnLoadSceneAsync("4_Hit");
     }
