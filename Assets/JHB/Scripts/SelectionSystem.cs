@@ -78,6 +78,6 @@ public class SelectionSystem : MonoBehaviour
     }
     void SetSelection()
     {
-        // set selection into singleton class
+        GameSceneManager.GSM.SetPlayerSelectObjectType((ObjectType)curSelection);
     }
 }

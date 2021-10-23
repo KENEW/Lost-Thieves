@@ -46,7 +46,7 @@ public class StuffMoveSystem : MonoBehaviour
                 var x = UnityEngine.Random.Range(leftDown.position.x, rightUp.position.x);
                 var y = UnityEngine.Random.Range(leftDown.position.y, rightUp.position.y);
                 moves[index].Init(x, y, stuffsList[0]);
-                Debug.Log(stuffsList[0].Base.Type);
+                //Debug.Log(stuffsList[0].Base.Type);
                 answerList.Add(stuffsList[0]);
                 stuffsList.RemoveAt(0);
             }
@@ -62,7 +62,7 @@ public class StuffMoveSystem : MonoBehaviour
         var answer = answerList[0];
         answerList.RemoveAt(0);
 
-        SetAnswer();
+        SetAnswer(answer);
 
         while (answerList.Count != 0)
         {
@@ -72,7 +72,7 @@ public class StuffMoveSystem : MonoBehaviour
                 var x = UnityEngine.Random.Range(leftDown.position.x, rightUp.position.x);
                 var y = UnityEngine.Random.Range(leftDown.position.y, rightUp.position.y);
                 moves[index].Init(x, y, answerList[0]);
-                Debug.Log(answerList[0].Base.Type);
+                //Debug.Log(answerList[0].Base.Type);
                 answerList.RemoveAt(0);
             }
         }
@@ -135,8 +135,9 @@ public class StuffMoveSystem : MonoBehaviour
     {
         // Load from singleton class
     }
-    void SetAnswer()
+    void SetAnswer(Stuff s)
     {
+        GameSceneManager.GSM.SetAnswerObjectType(s.Base.Type);
         // Set Answer into singleton class
     }
 }

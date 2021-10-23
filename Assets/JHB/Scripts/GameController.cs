@@ -28,9 +28,7 @@ public class GameController : MonoBehaviour
             myAnimation.HandleUpdate();
         else if (state == State.Select)
             selectSystem.HandleUpdate();
-
     }
-
     void MoveOver()
     {
         if(state == State.Day1)
@@ -54,11 +52,14 @@ public class GameController : MonoBehaviour
             myAnimation.gameObject.SetActive(false);
             stuffMoveSystem.gameObject.SetActive(true);
             stuffMoveSystem.MakeAnswer();
-            
         }
     }
     void SelectOver()
     {
+        GameSceneManager.GSM.LoadSceneAsync("SceneThree");
+        //Debug.Log(GameSceneManager.GSM.GetPlayerSelectObjectType());
+        //Debug.Log(GameSceneManager.GSM.GetAnswerObjectType());
+        GameSceneManager.GSM.UnLoadSceneAsync("Scene2");
         // TODO : goto battle scene
     }
 }
