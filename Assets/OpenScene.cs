@@ -12,7 +12,7 @@ public class OpenScene : MonoBehaviour
 
     public void GameStart()
     {
-        GameSceneManager.GSM.LoadSceneAsync("scene2");
+        GameSceneManager.GSM.LoadSceneAsync("Scene2");
         GameSceneManager.GSM.UnLoadSceneAsync("0_Title");
     }
 }

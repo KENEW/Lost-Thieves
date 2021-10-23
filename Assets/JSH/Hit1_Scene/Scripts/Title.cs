@@ -20,7 +20,7 @@ public class Title : MonoBehaviour
     private void GameStart()
     {
         GameSceneManager.GSM.LoadSceneAsync("Scene2");
-        GameSceneManager.GSM.UnLoadSceneAsync("0_Tilte");
+        GameSceneManager.GSM.UnLoadSceneAsync("0_Title");
     }
 
     private void CreditOpen()

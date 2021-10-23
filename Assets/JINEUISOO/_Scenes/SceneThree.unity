@@ -439,7 +439,7 @@ MonoBehaviour:
   _characterImageGO: {fileID: 630081016}
   _gaugeController: {fileID: 1809136376}
   speedMeter: {fileID: 41761807}
-  _movingSpeedMulti: 4
+  _movingSpeedMulti: 2
   _separateGoBackAndGoFowardStance: 0.61
   _jumpAble: 0
   _jumpDisabled: 0
@@ -786,7 +786,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 342617073}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.97, y: -1.83, z: 0}
+  m_LocalPosition: {x: 8.49, y: -1.83, z: 0}
   m_LocalScale: {x: 3, y: 4.06, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2078,6 +2078,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1565665858}
+  - component: {fileID: 1565665859}
   m_Layer: 0
   m_Name: SceneThreeGameManager
   m_TagString: Untagged
@@ -2099,6 +2100,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1565665859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565665857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6246da1ead1a0734da48650af39fa65f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameInitialization: 1
 --- !u!1001 &1607699170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2301,6 +2315,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1955576726}
+  - component: {fileID: 1955576727}
   m_Layer: 0
   m_Name: ClockGroup
   m_TagString: Untagged
@@ -2324,6 +2339,20 @@ Transform:
   m_Father: {fileID: 1987654062}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1955576727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955576725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5368c077f4d456b489b613f11ea4666c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startTime: 0
+  _innerTime: 0
 --- !u!1 &1987654061
 GameObject:
   m_ObjectHideFlags: 0
