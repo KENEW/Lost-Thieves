@@ -6,7 +6,7 @@ public class StuffList : MonoBehaviour
 {
     //[SerializeField] Transform rightUp;
     //[SerializeField] Transform leftDown;
-    [SerializeField] List<Stuff> stuffs;
+    /*[SerializeField] List<Stuff> stuffs;
     [SerializeField] List<StuffMove> moves;
     [SerializeField] int level;
     
@@ -25,9 +25,9 @@ public class StuffList : MonoBehaviour
             int index = Random.Range(0, moves.Count);
             if (moves[index].MyStuff == null)
             {
-                moves[index].MyStuff = stuffsList[0];
+                moves[index].SetStuff(stuffsList[0]);
                 stuffsList.RemoveAt(0);
             }
         }
-    }
+    }*/
 }

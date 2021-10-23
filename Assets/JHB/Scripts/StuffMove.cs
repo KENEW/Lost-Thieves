@@ -4,46 +4,41 @@ using UnityEngine;
 
 public class StuffMove : MonoBehaviour
 {
-    [SerializeField] Transform rightUp;
-    [SerializeField] Transform leftDown;
-
-    [SerializeField] Transform rightUpLim;
-    [SerializeField] Transform leftDownLim;
-
-    Stuff myStuff;
-    Vector3 targetPos;
-    Vector3 curPos;
-    Vector3 DirVec;
-
-    public Stuff MyStuff { get => myStuff; set => myStuff = value; }
-
-    // Start is called before the first frame update
-    void Start()
+    private Stuff myStuff;
+    private Vector3 originPos;
+    private Vector3 targetPos;
+    private Vector3 curPos;
+    private Vector3 dirVec;
+    public Stuff MyStuff { get => myStuff; }
+    public Vector3 DirVec { get => dirVec; }
+    private void Awake()
     {
-        if (MyStuff != null)
-        {
-            GetComponent<SpriteRenderer>().sprite = myStuff.Base.Sprite;
-            curPos = GetComponent<Transform>().position;
-            GetComponent<Transform>().localScale *= MyStuff.Scale;
-            targetPos.x = Random.Range(leftDown.position.x, rightUp.position.x);
-            targetPos.y = Random.Range(leftDown.position.y, rightUp.position.y);
-            DirVec = (targetPos - curPos).normalized;
-        }
+        originPos = GetComponent<Transform>().position;
     }
-    private void Update()
+    public void Init(float x, float y, Stuff stuff)
     {
-        if (MyStuff != null)
-        {
-            transform.position += DirVec * myStuff.Speed * Time.deltaTime;
-            LimitCheck();
-        }
+        myStuff = stuff;
+        curPos = GetComponent<Transform>().position;
+        
+        GetComponent<Transform>().localScale *= MyStuff.Scale;
+        GetComponent<SpriteRenderer>().sprite = myStuff.Base.Sprite;
+
+        targetPos = new Vector3(x, y);
+        dirVec = (targetPos - curPos).normalized;
+
+        
     }
-    // Update is called once per frame
-    void LimitCheck()
+    public void Move()
     {
-        if (transform.position.x <= leftDownLim.position.x || transform.position.x >= rightUpLim.position.x || transform.position.y <= leftDownLim.position.y || transform.position.y >= rightUpLim.position.y)
-        {
-            DirVec *= -1;
-        }
+        transform.position += dirVec * myStuff.Speed * Time.deltaTime;
+    }
+    public void ChangeDir()
+    {
+        dirVec *= -1;
+    }
+    public void Init()
+    {
+        transform.position = originPos;
+        myStuff = null;
     }
 }
