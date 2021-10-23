@@ -48,10 +48,11 @@ public class GameSceneManager : MonoBehaviour
     [SerializeField] float _totalScore;
 
     [SerializeField] SCO_LevelSetting[] _levelSettings;
-    internal SCO_LevelSetting[] GetLevelSettings => _levelSettings;
-    internal SCO_LevelSetting GetLevelSetting(int number) => _levelSettings[number];
 
     #region Interfaeces
+
+    internal SCO_LevelSetting[] GetLevelSettings => _levelSettings;
+    internal SCO_LevelSetting GetLevelSetting(int number) => _levelSettings[number];
 
     public void SetHowManyWeLooped(int value) => _howManyNumberWeLooped = value;
     public int GetHowManyWeLooped() => _howManyNumberWeLooped;
