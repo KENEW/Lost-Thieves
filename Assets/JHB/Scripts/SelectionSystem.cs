@@ -12,12 +12,12 @@ public class SelectionSystem : MonoBehaviour
     int curSelection = 0;
     private void Start()
     {
-        scrollbar.value = -0.08f + (0.39f * (float)curSelection);
+        scrollbar.value = -0.17f + (0.45f * (float)curSelection);
     }
     // Update is called once per frame
     public void HandleUpdate()
     {
-        if(scrollUI.transform.position.y >= 0)
+        if (scrollUI.transform.position.y >= 0)
         {
             int prevSelection = curSelection;
             if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -31,9 +31,28 @@ public class SelectionSystem : MonoBehaviour
             }
             curSelection = Mathf.Clamp(curSelection, 0, 4);
             if (prevSelection != curSelection)
-                UpdateScrollSmooth(-0.08f + (0.39f * (float)curSelection));
+                UpdateScrollSmooth(-0.17f + (0.45f * (float)curSelection));
         }
     }
+    /*public void Update()
+    {
+        if (scrollUI.transform.position.y >= 0)
+        {
+            int prevSelection = curSelection;
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+                curSelection++;
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                curSelection--;
+            else if (Input.GetKeyDown(KeyCode.Space))
+            {
+                SetSelection();
+                OnSelectOver();
+            }
+            curSelection = Mathf.Clamp(curSelection, 0, 4);
+            if (prevSelection != curSelection)
+                UpdateScrollSmooth(-0.17f + (0.45f * (float)curSelection));
+        }
+    }*/
     public void UpdateScrollSmooth(float value)
     {
         if (value < scrollbar.value)
