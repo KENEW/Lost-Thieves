@@ -7,6 +7,7 @@ public class Credit : MonoBehaviour
     AudioSource audioSource;
     [SerializeField] RectTransform texts;
     [SerializeField] float speed;
+    [SerializeField] GameObject end;
     Vector3 originalPos;
     // Start is called before the first frame update
     private void Awake()
@@ -22,16 +23,24 @@ public class Credit : MonoBehaviour
     }
     IEnumerator GoUP()
     {
-        while(true)
+        while(end.GetComponent<RectTransform>().position.y < 0)
         {
             var tmp = texts.transform.position;
             tmp.y = tmp.y + speed;
             texts.transform.position = tmp;
+            float size = end.GetComponent<RectTransform>().position.y * -30 / 100;
+            size = Mathf.Clamp(size, 0f, 1f);
+            audioSource.volume = size;
             yield return new WaitForSeconds(speed);
         }
     }
     private void OnDisable()
     {
         audioSource.Stop();
+    }
+
+    private void Update()
+    {
+        Debug.Log(end.GetComponent<RectTransform>().position.y);
     }
 }
