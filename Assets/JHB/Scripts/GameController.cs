@@ -18,7 +18,6 @@ public class GameController : MonoBehaviour
         myAnimation.OnAnimOver += AnimOver;
         selectSystem.OnSelectOver += SelectOver;
     }
-
     // Update is called once per frame
     void Update()
     {

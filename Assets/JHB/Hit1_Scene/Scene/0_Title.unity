@@ -800,9 +800,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2fa2f53bebd4d2478fcee4866e85939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  texts: {fileID: 2140646805}
+  texts: {fileID: 2140646806}
   speed: 0.001
-  originalPos: {x: 0, y: -1200, z: 0}
 --- !u!1 &587169726
 GameObject:
   m_ObjectHideFlags: 0
