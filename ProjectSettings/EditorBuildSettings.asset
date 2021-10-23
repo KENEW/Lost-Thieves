@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/JHB/Scenes/Scene2.unity
     guid: 3b01906a35b6c3b498a2471af7fa337f
   - enabled: 1
-    path: Assets/JSH/Hit1_Scene/Scene/0_Title.unity
+    path: Assets/JHB/Hit1_Scene/Scene/0_Title.unity
     guid: 2f37a380aedc2f942aa59b2de7f56d64
   - enabled: 1
     path: Assets/JSH/Hit4_Scene/Scene/4_Hit.unity
