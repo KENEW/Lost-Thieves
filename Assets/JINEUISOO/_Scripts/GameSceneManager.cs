@@ -40,6 +40,15 @@ public class GameSceneManager : MonoBehaviour
     [SerializeField] List<AsyncOperation> _scenesLoaded = new List<AsyncOperation>();
 
 
+    public ObjectType _playerSelectObjectType;
+    public ObjectType _answerObjectType;
+
+    public void SetPlayerSelectObjectType(ObjectType type) => _playerSelectObjectType = type;
+    public ObjectType GetPlayerSelectObjectType() => _playerSelectObjectType;
+
+    public void SetAnswerObjectType(ObjectType type) => _answerObjectType = type;
+    public ObjectType GetAnswerObjectType() => _answerObjectType;
+
     private void Awake()
     {
         var thisSingleton = FindObjectsOfType<GameSceneManager>();

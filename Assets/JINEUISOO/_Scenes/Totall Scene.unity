@@ -156,6 +156,8 @@ MonoBehaviour:
   _testUnload: 0
   _gameStartInitialization: 0
   _isAllScenesLoaded: 0
+  _playerSelectObjectType: 0
+  _answerObjectType: 0
 --- !u!4 &1984268514
 Transform:
   m_ObjectHideFlags: 0
