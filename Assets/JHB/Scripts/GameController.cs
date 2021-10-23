@@ -57,8 +57,8 @@ public class GameController : MonoBehaviour
     void SelectOver()
     {
         GameSceneManager.GSM.LoadSceneAsync("SceneThree");
-        //Debug.Log(GameSceneManager.GSM.GetPlayerSelectObjectType());
-        //Debug.Log(GameSceneManager.GSM.GetAnswerObjectType());
+        Debug.Log($"{gameObject.name} : playerselection {GameSceneManager.GSM.GetPlayerSelectObjectType()}");
+        Debug.Log($"{gameObject.name} : stolenobject {GameSceneManager.GSM.GetAnswerObjectType()}");
         GameSceneManager.GSM.UnLoadSceneAsync("Scene2");
         // TODO : goto battle scene
     }

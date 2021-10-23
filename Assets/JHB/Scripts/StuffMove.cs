@@ -22,8 +22,7 @@ public class StuffMove : MonoBehaviour
         
         GetComponent<Transform>().localScale *= MyStuff.Scale;
         GetComponent<SpriteRenderer>().sprite = myStuff.Base.Sprite;
-
-        targetPos = new Vector3(x, y);
+        targetPos = new Vector3(x, y, 0.5f);
         dirVec = (targetPos - curPos).normalized;
 
         
