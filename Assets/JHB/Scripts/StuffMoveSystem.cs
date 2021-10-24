@@ -19,6 +19,9 @@ public class StuffMoveSystem : MonoBehaviour
     [SerializeField] int level;
     [SerializeField] Animator timer;
 
+    [SerializeField] AudioSource _BGM;
+    [SerializeField] AudioSource _TicTok;
+
     string message;
     public Action OnMoveOver;
     float curTime;
@@ -33,7 +36,6 @@ public class StuffMoveSystem : MonoBehaviour
     // Start is called before the first frame update
     public void HandleStart()
     {
-        
         SetLevel();
         timeText.text = "10";
         startTimer.gameObject.SetActive(true);
@@ -154,4 +156,18 @@ public class StuffMoveSystem : MonoBehaviour
         GameSceneManager.GSM.SetAnswerObjectType(s.Base.Type);
         // Set Answer into singleton class
     }
+    public void SetSound(AudioClip bgm, AudioClip tictok = null)
+    {
+        _BGM.clip = bgm;
+        _BGM.Play();
+
+        _TicTok.clip = tictok;
+        if(tictok == null)
+        {
+            _TicTok.Stop();
+        }
+        else
+            _TicTok.Play();
+    }
+
 }
