@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _testLoad: 0
   _testUnload: 0
-  _gameStartInitialization: 1
+  _gameStartInitialization: 0
   _isAllScenesLoaded: 0
   _playerSelectObjectType: 0
   _answerObjectType: 0
