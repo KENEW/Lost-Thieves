@@ -3077,6 +3077,7 @@ MonoBehaviour:
   curTimeText: {fileID: 1680257156}
   normalColor: {r: 0, g: 0.48235297, b: 0.74509805, a: 1}
   emergencyColor: {r: 0.76470596, g: 0.17254902, b: 0, a: 1}
+  checkText: {fileID: 1820028864}
 --- !u!114 &1001464819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3379,21 +3380,21 @@ MonoBehaviour:
   hitEffectPool: {fileID: 1170850515}
   sprRend: {fileID: 1170850513}
   sprite0:
-  - {fileID: 21300000, guid: ba5a90293ad80da49a4fd13a1fd24e9d, type: 3}
-  - {fileID: 21300000, guid: 9dc18cc18fe830a4c9154fd96956a03c, type: 3}
-  - {fileID: 21300000, guid: 1256e4d5de74bc84fbdc2fda883155dd, type: 3}
-  sprite1:
-  - {fileID: 21300000, guid: 04a2cc97aa532ff44968f291726dee2c, type: 3}
-  - {fileID: 21300000, guid: 71a2b098d55e3b7418c6d386a3a5bcf6, type: 3}
-  - {fileID: 21300000, guid: cd464a1bb749bea4c9cac4737b470ba8, type: 3}
-  sprite2:
   - {fileID: 21300000, guid: 61e4f0c71acaeef418031be2e16d5272, type: 3}
   - {fileID: 21300000, guid: 5f7dcdccc7f3c5747955b84f2709b930, type: 3}
   - {fileID: 21300000, guid: ba9626c27b4543a4fb0daa70e47b7a1b, type: 3}
-  sprite3:
+  sprite1:
   - {fileID: 21300000, guid: 2c1f2e60ec4818048aa42af89e11489b, type: 3}
   - {fileID: 21300000, guid: 15d533b15d96de541bab57ff4bb37975, type: 3}
   - {fileID: 21300000, guid: 7558565bfb3fe3147ba8bb21e59468c7, type: 3}
+  sprite2:
+  - {fileID: 21300000, guid: ba5a90293ad80da49a4fd13a1fd24e9d, type: 3}
+  - {fileID: 21300000, guid: 9dc18cc18fe830a4c9154fd96956a03c, type: 3}
+  - {fileID: 21300000, guid: 1256e4d5de74bc84fbdc2fda883155dd, type: 3}
+  sprite3:
+  - {fileID: 21300000, guid: 04a2cc97aa532ff44968f291726dee2c, type: 3}
+  - {fileID: 21300000, guid: 71a2b098d55e3b7418c6d386a3a5bcf6, type: 3}
+  - {fileID: 21300000, guid: cd464a1bb749bea4c9cac4737b470ba8, type: 3}
 --- !u!1 &1191197402
 GameObject:
   m_ObjectHideFlags: 0

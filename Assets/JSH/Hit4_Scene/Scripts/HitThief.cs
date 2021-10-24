@@ -34,20 +34,20 @@ public class HitThief : MonoBehaviour
     {
         sprRend = GetComponent<SpriteRenderer>();
 
-        var sps = charId = 0;
+        var sps = charId = (int)GameSceneManager.GSM.GetPlayerSelectObjectType();
         switch ((int)GameSceneManager.GSM.GetAnswerObjectType())
         {
             case 0:
-                sprRend.sprite = sprite0[2];
+                sprRend.sprite = sprite0[0];
                 break;
             case 1:
-                sprRend.sprite = sprite1[2];
+                sprRend.sprite = sprite1[0];
                 break;
             case 2:
-                sprRend.sprite = sprite2[2];
+                sprRend.sprite = sprite2[0];
                 break;
             case 3:
-                sprRend.sprite = sprite3[2];
+                sprRend.sprite = sprite3[0];
                 break;
         }
         curTime = Time.realtimeSinceStartup;
@@ -62,16 +62,16 @@ public class HitThief : MonoBehaviour
                 switch (charId)
                 {
                     case 0:
-                        sprRend.sprite = sprite0[2];
+                        sprRend.sprite = sprite0[0];
                         break;
                     case 1:
-                        sprRend.sprite = sprite1[2];
+                        sprRend.sprite = sprite1[0];
                         break;
                     case 2:
-                        sprRend.sprite = sprite2[2];
+                        sprRend.sprite = sprite2[0];
                         break;
                     case 3:
-                        sprRend.sprite = sprite3[2];
+                        sprRend.sprite = sprite3[0];
                         break;
                 }
                 
@@ -111,10 +111,5 @@ public class HitThief : MonoBehaviour
         punchEffect.GetComponent<PunchEffect>().Init(hitEffectPool, fever);
         punchEffect.transform.position = hitPosList[hitIndex].position;
     }
-
-    public bool TheifCheck()
-    {
-        return true;
-        //return ( GameSceneManager.GSM.GetAnswerObjectType();
-    }
+    
 }

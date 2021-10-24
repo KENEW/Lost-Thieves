@@ -27,7 +27,8 @@ public class TimeGauge : MonoBehaviour
     private bool isTimeOver = false;
 
     private HitScore timeGauge;
-
+    
+    
     private void Start()
     {
         // 테스트 코드
@@ -41,7 +42,11 @@ public class TimeGauge : MonoBehaviour
         CalcTime();
         GaugeUpdate();
     }
-
+    
+    public bool TheifCheck()
+    {
+        return GameSceneManager.GSM.GetAnswerObjectType() == GameSceneManager.GSM.GetPlayerSelectObjectType();
+    }
     /// <summary>
     /// 시간을 계산합니다.
     /// </summary>
@@ -52,6 +57,7 @@ public class TimeGauge : MonoBehaviour
             if (curTime - 1.0f < 0)
             {
                 isTimeOver = true;
+                checkText.text = TheifCheck() ? "범인을 잡았습니다!" : "범인이 아니었네요ㅜㅜ";
                 fadePanel.SetActive(true);
                 timeOverPanel.SetActive(true);
                 timeGaugeImg.fillAmount = 0.00000f;
