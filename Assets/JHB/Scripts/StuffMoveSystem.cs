@@ -29,7 +29,7 @@ public class StuffMoveSystem : MonoBehaviour
     List<Stuff> answerList = new List<Stuff>();
 
     bool waitTime = true;
-    float waitTimeInt = 6f;
+    float waitTimeInt = 4f;
 
     public string Message { get => message; set => message = value; }
 
@@ -94,7 +94,7 @@ public class StuffMoveSystem : MonoBehaviour
         if(waitTime)
         {
             waitTimeInt -= Time.deltaTime;
-            if(waitTimeInt > 5)
+            if(waitTimeInt > 3)
             {
                 startTimer.text = message;
             }
