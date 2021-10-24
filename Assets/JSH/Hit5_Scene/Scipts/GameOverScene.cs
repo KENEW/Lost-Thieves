@@ -8,7 +8,7 @@ public class GameOverScene : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameSceneManager.GSM.LoadSceneAsync("Scene2");
+            GameSceneManager.GSM.LoadSceneAsync("0_Title");
             GameSceneManager.GSM.LoadSceneAsync("5_GameScene");
         }
     }
