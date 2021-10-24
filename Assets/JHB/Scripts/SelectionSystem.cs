@@ -21,7 +21,7 @@ public class SelectionSystem : MonoBehaviour
     // Update is called once per frame
     public void HandleUpdate()
     {
-        if (scrollUI.transform.position.y >= 0)
+        if (scrollUI.transform.position.y >= 0 && !source.isPlaying)
         {
             int prevSelection = curSelection;
             if (Input.GetKeyDown(KeyCode.RightArrow))
