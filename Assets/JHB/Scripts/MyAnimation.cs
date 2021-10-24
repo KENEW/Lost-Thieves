@@ -8,6 +8,7 @@ public class MyAnimation : MonoBehaviour
     [SerializeField] List<Sprite> sprites;
     [SerializeField] float passTime;
     [SerializeField] Image ui;
+    [SerializeField] AudioSource _BGM;
     float curTime = 0;
     int curIndex = 0;
 
@@ -81,5 +82,10 @@ public class MyAnimation : MonoBehaviour
             ui.color = new Color(ui.color.r, ui.color.g, ui.color.b, tmp);
             yield return new WaitForSeconds(0.01f);
         }
+    }
+    public void SetSound(AudioClip bgm)
+    {
+        _BGM.clip = bgm;
+        _BGM.Play();
     }
 }

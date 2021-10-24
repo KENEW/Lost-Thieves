@@ -8,8 +8,12 @@ public class SelectionSystem : MonoBehaviour
 {
     [SerializeField] Scrollbar scrollbar;
     [SerializeField] GameObject scrollUI;
+    [SerializeField] AudioSource source;
+    [SerializeField] AudioClip clip;
+    AudioClip thiefSound;
     public Action OnSelectOver;
     int curSelection = 0;
+    bool checker = false;
     private void Start()
     {
         scrollbar.value = -0.17f + (0.45f * (float)curSelection);
@@ -32,6 +36,11 @@ public class SelectionSystem : MonoBehaviour
             curSelection = Mathf.Clamp(curSelection, 0, 3);
             if (prevSelection != curSelection)
                 UpdateScrollSmooth(-0.17f + (0.45f * (float)curSelection));
+        }
+
+        if(checker && !source.isPlaying)
+        {
+            LoadScene();
         }
     }
     /*public void Update()
@@ -97,6 +106,17 @@ public class SelectionSystem : MonoBehaviour
     }
     void SetSelection()
     {
+        source.PlayOneShot(clip);
+        checker = true;
         GameSceneManager.GSM.SetPlayerSelectObjectType((ObjectType)curSelection);
+    }
+
+    void LoadScene()
+    {
+        checker = false;    
+        GameSceneManager.GSM.LoadSceneAsync("SceneThree");
+        Debug.Log($"{gameObject.name} : playerselection {GameSceneManager.GSM.GetPlayerSelectObjectType()}");
+        Debug.Log($"{gameObject.name} : stolenobject {GameSceneManager.GSM.GetAnswerObjectType()}");
+        GameSceneManager.GSM.UnLoadSceneAsync("Scene2");
     }
 }
