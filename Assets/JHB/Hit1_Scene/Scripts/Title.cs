@@ -29,22 +29,23 @@ public class Title : MonoBehaviour
     }
     private void CreditOpen()
     {
-        title.SetActive(false);
+        //title.SetActive(false);
         credit.SetActive(true);
     }
     private void CreditClose()
     {
-        title.SetActive(true);
+        //title.SetActive(true);
         credit.SetActive(false);
     }
     private void GameExit()
     {
+#if UNITY_EDITOR
+        Debug.Log("Exit Cilcked");
+        UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_STANDALONE_WIN
         Application.Quit();
-    #if UNITY_EDITOR
-              
-          #endif
-    #if UNITY_STANDALONE_WIN
-        
-    #endif
+#else
+        Application.Quit();
+#endif
     }
 }

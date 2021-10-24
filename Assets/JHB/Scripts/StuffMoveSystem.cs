@@ -17,6 +17,7 @@ public class StuffMoveSystem : MonoBehaviour
     [SerializeField] List<StuffMove> moves;
     [SerializeField] float LimTime;
     [SerializeField] int level;
+    [SerializeField] Animator timer;
 
     string message;
     public Action OnMoveOver;
@@ -32,6 +33,7 @@ public class StuffMoveSystem : MonoBehaviour
     // Start is called before the first frame update
     public void HandleStart()
     {
+        
         SetLevel();
         timeText.text = "10";
         startTimer.gameObject.SetActive(true);
@@ -56,6 +58,8 @@ public class StuffMoveSystem : MonoBehaviour
             }
         }
         curTime = LimTime;
+        timer.speed = 0;
+        
     }
     public void MakeAnswer()
     {
@@ -99,6 +103,7 @@ public class StuffMoveSystem : MonoBehaviour
             if (waitTimeInt <= 0)
             {
                 waitTime = false;
+                timer.speed = 1;
                 startTimer.gameObject.SetActive(false);
             }
                 
@@ -107,6 +112,8 @@ public class StuffMoveSystem : MonoBehaviour
         {
             curTime -= Time.deltaTime;
             timeText.text = curTime.ToString("N0");
+            if (Convert.ToInt32(timeText.text) <= 3)
+                timer.speed = 2;
             foreach (var move in moves)
             {
                 if (move.MyStuff != null && curTime <= move.MyStuff.Time)
@@ -125,6 +132,7 @@ public class StuffMoveSystem : MonoBehaviour
                 waitTimeInt = 6f;
                 waitTime = true;
                 OnMoveOver();
+                timer.speed = 0;
             }
         }
     }
