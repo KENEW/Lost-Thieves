@@ -24,6 +24,7 @@ public class LevelGroundSpawner : MonoBehaviour
 
     void Initialization()
     {
+        SetDifficulty();
         _colliderSize = this.transform.GetComponent<BoxCollider2D>().size;
         SetBasicObjectsMoveSpeed();
 
