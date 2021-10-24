@@ -28,7 +28,7 @@ public class GameOverScene : MonoBehaviour
         {
             if (isGetPress)
             {
-                GameSceneManager.GSM.LoadSceneAsync("Scene2");
+                GameSceneManager.GSM.LoadSceneAsync("0_Title");
                 GameSceneManager.GSM.LoadSceneAsync("5_GameScene");
             }
         }

@@ -15,5 +15,5 @@ public class StuffBase : ScriptableObject
 [System.Serializable]
 public enum ObjectType
 {
-    °úÁ¦, °í¾çÀÌ, °¡¹ß, Å¸·ÎÄ«µå
+    ê³¼ì œ, ê³ ì–‘ì´, ê°€ë°œ, íƒ€ë¡œì¹´ë“œ
 }
