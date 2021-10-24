@@ -35,7 +35,7 @@ public class HitThief : MonoBehaviour
         sprRend = GetComponent<SpriteRenderer>();
 
         var sps = charId = (int)GameSceneManager.GSM.GetPlayerSelectObjectType();
-        switch ((int)GameSceneManager.GSM.GetAnswerObjectType())
+        switch (charId)
         {
             case 0:
                 sprRend.sprite = sprite0[0];
