@@ -173,7 +173,6 @@ public class GameSceneManager : MonoBehaviour
 
     IEnumerator WaitUntilScenesLoadedAndSetActiveScene(string sceneName)
     {
-
         while (_isAllScenesLoaded == false)
         {
             Debug.Log($"Now waiting for All scenes loaded");

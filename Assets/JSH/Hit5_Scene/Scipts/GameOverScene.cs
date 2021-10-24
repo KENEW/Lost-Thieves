@@ -29,7 +29,7 @@ public class GameOverScene : MonoBehaviour
             if (isGetPress)
             {
                 GameSceneManager.GSM.LoadSceneAsync("0_Title");
-                GameSceneManager.GSM.LoadSceneAsync("5_GameScene");
+                GameSceneManager.GSM.LoadSceneAsync("5_GameOver");
             }
         }
     }
