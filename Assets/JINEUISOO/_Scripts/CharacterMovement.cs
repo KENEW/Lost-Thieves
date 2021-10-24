@@ -71,7 +71,7 @@ public class CharacterMovement : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.B) && _jumpAble == true && _jumpDisabled == false)
+        if (Input.GetKey(KeyCode.Z) && _jumpAble == true && _jumpDisabled == false)
         {
             _characterRB.AddForce(new Vector2(0f, _jumpPower));
             _jumpAble = false;
