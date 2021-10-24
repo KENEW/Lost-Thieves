@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startTime: 45
   _moveSpeed: 4
-  _separateBackAndGo: 0.5
+  _separateBackAndGo: 0.7
+  _movePlatformSpeed: {x: -4, y: 0, z: 0}

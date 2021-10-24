@@ -13,8 +13,16 @@ public class Title : MonoBehaviour
 
     [SerializeField] GameObject title;
     [SerializeField] GameObject credit;
+    [SerializeField] AudioClip click;
+    [SerializeField] AudioClip BGM;
+    AudioSource audioSource;
+
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = BGM;
+
+        audioSource.Play();
         startBt.onClick.AddListener(GameStart);
         creditBt.onClick.AddListener(CreditOpen);
         ExitBt.onClick.AddListener(GameExit);
@@ -22,6 +30,7 @@ public class Title : MonoBehaviour
     }
     private void GameStart()
     {
+        audioSource.PlayOneShot(click);
         GameSceneManager.GSM.SetHowManyWeLooped(0);
         GameSceneManager.GSM.SetTotalScore(0f);
         GameSceneManager.GSM.LoadSceneAsync("Scene2");
@@ -29,22 +38,25 @@ public class Title : MonoBehaviour
     }
     private void CreditOpen()
     {
-        title.SetActive(false);
+        audioSource.PlayOneShot(click);
+        //title.SetActive(false);
         credit.SetActive(true);
     }
     private void CreditClose()
     {
-        title.SetActive(true);
+        //title.SetActive(true);
         credit.SetActive(false);
     }
     private void GameExit()
     {
+        audioSource.PlayOneShot(click);
+#if UNITY_EDITOR
+        Debug.Log("Exit Cilcked");
+        UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_STANDALONE_WIN
         Application.Quit();
-    #if UNITY_EDITOR
-              
-          #endif
-    #if UNITY_STANDALONE_WIN
-        
-    #endif
+#else
+        Application.Quit();
+#endif
     }
 }

@@ -17,7 +17,12 @@ public class StuffMoveSystem : MonoBehaviour
     [SerializeField] List<StuffMove> moves;
     [SerializeField] float LimTime;
     [SerializeField] int level;
+    [SerializeField] Animator timer;
 
+    [SerializeField] AudioSource _BGM;
+    [SerializeField] AudioSource _TicTok;
+
+    string message;
     public Action OnMoveOver;
     float curTime;
     List<Stuff> stuffsList = new List<Stuff>();
@@ -25,6 +30,9 @@ public class StuffMoveSystem : MonoBehaviour
 
     bool waitTime = true;
     float waitTimeInt = 6f;
+
+    public string Message { get => message; set => message = value; }
+
     // Start is called before the first frame update
     public void HandleStart()
     {
@@ -52,6 +60,8 @@ public class StuffMoveSystem : MonoBehaviour
             }
         }
         curTime = LimTime;
+        timer.speed = 0;
+        
     }
     public void MakeAnswer()
     {
@@ -86,7 +96,7 @@ public class StuffMoveSystem : MonoBehaviour
             waitTimeInt -= Time.deltaTime;
             if(waitTimeInt > 5)
             {
-                startTimer.text = "나오는 사물을 기억하세요!";
+                startTimer.text = message;
             }
             else
             {
@@ -95,6 +105,7 @@ public class StuffMoveSystem : MonoBehaviour
             if (waitTimeInt <= 0)
             {
                 waitTime = false;
+                timer.speed = 1;
                 startTimer.gameObject.SetActive(false);
             }
                 
@@ -103,6 +114,8 @@ public class StuffMoveSystem : MonoBehaviour
         {
             curTime -= Time.deltaTime;
             timeText.text = curTime.ToString("N0");
+            if (Convert.ToInt32(timeText.text) <= 3)
+                timer.speed = 2;
             foreach (var move in moves)
             {
                 if (move.MyStuff != null && curTime <= move.MyStuff.Time)
@@ -121,6 +134,7 @@ public class StuffMoveSystem : MonoBehaviour
                 waitTimeInt = 6f;
                 waitTime = true;
                 OnMoveOver();
+                timer.speed = 0;
             }
         }
     }
@@ -142,4 +156,18 @@ public class StuffMoveSystem : MonoBehaviour
         GameSceneManager.GSM.SetAnswerObjectType(s.Base.Type);
         // Set Answer into singleton class
     }
+    public void SetSound(AudioClip bgm, AudioClip tictok = null)
+    {
+        _BGM.clip = bgm;
+        _BGM.Play();
+
+        _TicTok.clip = tictok;
+        if(tictok == null)
+        {
+            _TicTok.Stop();
+        }
+        else
+            _TicTok.Play();
+    }
+
 }

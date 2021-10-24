@@ -36,6 +36,11 @@ public class LevelGroundSpawner : MonoBehaviour
         }
     }
 
+    void SetDifficulty()
+    {
+        _movePlatformPos = GameSceneManager.GSM.GetLevelSetting(GameSceneManager.GSM.GetHowManyWeLooped()).PlatformSpeed;
+    }
+
     void Update()
     {
         

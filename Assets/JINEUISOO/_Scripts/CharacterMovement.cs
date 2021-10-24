@@ -20,6 +20,8 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] float _jumpDisableTime;
     [SerializeField] float _jumpPower;
 
+    [SerializeField] GameObject _jumpSound;
+
     Rigidbody2D _characterRB;
 
     // Start is called before the first frame update
@@ -32,7 +34,13 @@ public class CharacterMovement : MonoBehaviour
 
     void Initialization()
     {
+        SetDifficulty();
+    }
 
+    void SetDifficulty()
+    {
+        _separateGoBackAndGoFowardStance = GameSceneManager.GSM.GetLevelSetting(GameSceneManager.GSM.GetHowManyWeLooped()).SeparateBackAndGo;
+        _movingSpeedMulti = GameSceneManager.GSM.GetLevelSetting(GameSceneManager.GSM.GetHowManyWeLooped()).MoveSpeed;
     }
 
     // Update is called once per frame
@@ -46,13 +54,13 @@ public class CharacterMovement : MonoBehaviour
         
         tempFloatXPos = _movingSpeedMulti * tempFloatXPos;
 
-        speedMeter.text = tempFloatXPos.ToString();
+        //speedMeter.text = tempFloatXPos.ToString();
 
         Vector2 tempVector2CharacterPos = new Vector2(tempFloatXPos, _characterRB.velocity.y);
 
         _characterRB.velocity = tempVector2CharacterPos;
 
-        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(new Vector2(_characterImageGO.transform.position.x, _characterImageGO.transform.position.y + -0.1f), new Vector2(0.5f, 1), 0.0f);
+        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(new Vector2(_characterImageGO.transform.position.x, _characterImageGO.transform.position.y + -1.6f), new Vector2(0.5f, 1), 0.0f);
 
         foreach(Collider2D col2D in collider2Ds)
         {
@@ -69,6 +77,7 @@ public class CharacterMovement : MonoBehaviour
             _jumpAble = false;
             _jumpDisabled = true;
             StartCoroutine(SetJumpDisableToTrue(_jumpDisableTime));
+            Instantiate(_jumpSound);
         }
 
     }

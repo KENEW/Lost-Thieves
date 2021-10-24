@@ -14,6 +14,8 @@ public class SpeedGaugeController : MonoBehaviour
 
     [SerializeField] Image _gaugeMovingImage;
 
+    [SerializeField] GameObject _spaceBarSound;
+
     bool _keyDown, _keyUp;
 
     // 구간별로 Speed Gague 감소량이 달라지면 좋겠다. 낮을 때는 빨리 차고, 높을때는 느리게 차고.
@@ -38,6 +40,7 @@ public class SpeedGaugeController : MonoBehaviour
             SetSpeedGaugeValue();
             _keyDown = false;
             _keyUp = false;
+            Instantiate(_spaceBarSound);
         }
 
         _speedGagueValue -= 1 * _minusGaugePowerMulty;
