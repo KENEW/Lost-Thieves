@@ -115,7 +115,16 @@ public class TimeGauge : MonoBehaviour
     {
         GameSceneManager.GSM.SetTotalScore( GameSceneManager.GSM.GetTotalScore() + timeGauge.GetScore());
         GameSceneManager.GSM.SetHowManyWeLooped(GameSceneManager.GSM.GetHowManyWeLooped() + 1);
-        GameSceneManager.GSM.LoadSceneAsync("Scene2");
-        GameSceneManager.GSM.UnLoadSceneAsync("4_Hit");
+
+        if (TheifCheck())
+        {
+            GameSceneManager.GSM.LoadSceneAsync("Scene2");
+            GameSceneManager.GSM.UnLoadSceneAsync("4_Hit");
+        }
+        else
+        {
+            GameSceneManager.GSM.LoadSceneAsync("5_GameScene");
+            GameSceneManager.GSM.UnLoadSceneAsync("4_Hit");
+        }
     }
 }
