@@ -18,6 +18,7 @@ public class TimeGauge : MonoBehaviour
     [SerializeField] private Color normalColor;
     [SerializeField] private Color emergencyColor;
 
+    [SerializeField] private Text checkText;
     private float curTime;
     private float maxTime;
 

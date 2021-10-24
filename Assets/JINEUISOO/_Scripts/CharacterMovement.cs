@@ -28,7 +28,7 @@ public class CharacterMovement : MonoBehaviour
     void Start()
     {
         _characterRB = _characterImageGO.GetComponent<Rigidbody2D>();
-        _characterImageGO.transform.position = new Vector2(0f, -3.5f);
+        _characterImageGO.transform.position = new Vector2(0f, -3f);
         Initialization();
     }
 
@@ -60,7 +60,7 @@ public class CharacterMovement : MonoBehaviour
 
         _characterRB.velocity = tempVector2CharacterPos;
 
-        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(new Vector2(_characterImageGO.transform.position.x, _characterImageGO.transform.position.y + -1.6f), new Vector2(0.5f, 1), 0.0f);
+        Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(new Vector2(_characterImageGO.transform.position.x, _characterImageGO.transform.position.y + -1.2f), new Vector2(0.5f, 1), 0.0f);
 
         foreach(Collider2D col2D in collider2Ds)
         {

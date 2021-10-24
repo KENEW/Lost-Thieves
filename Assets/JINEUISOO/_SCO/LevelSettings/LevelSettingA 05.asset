@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: LevelSettingA 05
   m_EditorClassIdentifier: 
   _startTime: 40
-  _moveSpeed: 3
+  _moveSpeed: 2.7
   _separateBackAndGo: 0.85
-  _movePlatformSpeed: {x: -13, y: 0, z: 0}
+  _movePlatformSpeed: {x: -12, y: 0, z: 0}

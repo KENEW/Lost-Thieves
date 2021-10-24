@@ -35,7 +35,7 @@ public class HitThief : MonoBehaviour
         sprRend = GetComponent<SpriteRenderer>();
 
         var sps = charId = 0;
-        switch (sps)
+        switch ((int)GameSceneManager.GSM.GetAnswerObjectType())
         {
             case 0:
                 sprRend.sprite = sprite0[2];
@@ -111,5 +111,10 @@ public class HitThief : MonoBehaviour
         punchEffect.GetComponent<PunchEffect>().Init(hitEffectPool, fever);
         punchEffect.transform.position = hitPosList[hitIndex].position;
     }
-    
+
+    public bool TheifCheck()
+    {
+        return true;
+        //return ( GameSceneManager.GSM.GetAnswerObjectType();
+    }
 }
