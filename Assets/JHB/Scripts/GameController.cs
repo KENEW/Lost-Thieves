@@ -68,17 +68,6 @@ public class GameController : MonoBehaviour
     }
     void SelectOver()
     {
-        var tmp = this.gameObject.AddComponent<AudioSource>();
-        tmp.PlayOneShot(SFX);
-
-        if(!tmp.isPlaying)
-        {
-            GameSceneManager.GSM.LoadSceneAsync("SceneThree");
-            Debug.Log($"{gameObject.name} : playerselection {GameSceneManager.GSM.GetPlayerSelectObjectType()}");
-            Debug.Log($"{gameObject.name} : stolenobject {GameSceneManager.GSM.GetAnswerObjectType()}");
-            GameSceneManager.GSM.UnLoadSceneAsync("Scene2");
-        }
-
         // TODO : goto battle scene
     }
 }

@@ -28,7 +28,7 @@ public class SelectionSystem : MonoBehaviour
                 curSelection++;
             else if (Input.GetKeyDown(KeyCode.LeftArrow))
                 curSelection--;
-            else if (Input.GetKeyDown(KeyCode.Space))
+            else if (Input.GetKeyDown(KeyCode.Space) && !source.isPlaying)
             {
                 SetSelection();
                 OnSelectOver();
