@@ -38,7 +38,6 @@ public class ScoreTextEffect : MonoBehaviour
     private void Update()
     {
         transform.position = new Vector3(transform.position.x, transform.position.y + 3.5f, transform.position.z);
-        Debug.Log(scoreText);
         scoreText.color = new Color(scoreText.color.r, scoreText.color.g, scoreText.color.b, scoreText.color.a - 0.01f);
     }
 
