@@ -24,6 +24,8 @@ public class HitScore : MonoBehaviour
         
         var textEffect = textEfManager.ObjectDequeue("ScoreTextEffect");
         textEffect.GetComponent<ScoreTextEffect>().InitScore(textEfManager, score, fever);
+        
+        GameSceneManager.GSM.SetTotalScore(GameSceneManager.GSM.GetTotalScore() + score);
     }
 
     public void SetScore(int score)

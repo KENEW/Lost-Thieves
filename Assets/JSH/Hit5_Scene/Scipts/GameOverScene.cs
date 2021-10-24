@@ -43,7 +43,7 @@ public class GameOverScene : MonoBehaviour
 
         resultPanel.SetActive(true);
         StartCoroutine(CountNumber(theifNumText, 0, 5)); 
-        StartCoroutine(CountNumber(scoreText, 0, 50000)); 
+        StartCoroutine(CountNumber(scoreText, 0, GameSceneManager.GSM.GetTotalScore())); 
       //StartCoroutine(CountNumber(0, GameSceneManager.GSM.sce()));
       //StartCoroutine(CountNumber(0, GameSceneManager.GSM.GetTotalScore()));
         isGetPress = true;
