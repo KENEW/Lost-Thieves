@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +14,7 @@ public class HitGauge : MonoBehaviour
 
     [SerializeField] private Color normalGaugeColor;
     [SerializeField] private Color feverGaugeColor;
-    
+
     [SerializeField] private Transform feverLineTrans;
     private bool isFever = false;
 
@@ -31,19 +32,33 @@ public class HitGauge : MonoBehaviour
 
     private HitScore hitScore;
     private TimeGauge timeGauge;
+    private HitThief hitThief;
+
+    public SoundManager soundManager;
+
+    [SerializeField] private GameObject punchMotion;
+    private bool isPunch = false;
     
+    
+
     private void Start()
     {
         hitScore = FindObjectOfType<HitScore>();
         timeGauge = FindObjectOfType<TimeGauge>();
+        soundManager = FindObjectOfType<SoundManager>();
+        hitThief = FindObjectOfType<HitThief>();
         curTime = Time.realtimeSinceStartup;
+        punchTime = Time.realtimeSinceStartup;
+        punchMotion.SetActive(false);
+        soundManager.PlayBGM("HitBGM");
         //SetFeverLine();
     }
 
     private void SetFeverLine()
     {
         Vector3 feverPos = UtilLib.GetImagesize(hitGaugeOutImg.gameObject);
-        feverLineTrans.position = new Vector3(feverLineTrans.position.x + (feverPos.x * FeverRatio), feverLineTrans.position.y, feverLineTrans.position.z);
+        feverLineTrans.position = new Vector3(feverLineTrans.position.x + (feverPos.x * FeverRatio),
+            feverLineTrans.position.y, feverLineTrans.position.z);
     }
 
     private void Update()
@@ -51,8 +66,9 @@ public class HitGauge : MonoBehaviour
         GaugeUpdate();
         FeverCheck();
         DecreaseGauge();
+        PunchVFX();
         
-        if (!timeGauge.GetTimeOver()) 
+        if (!timeGauge.GetTimeOver())
             IncreaseGauge();
     }
 
@@ -63,7 +79,7 @@ public class HitGauge : MonoBehaviour
             isFever = true;
             hitGaugeInImg.color = feverGaugeColor;
             feverEffect.SetActive(true);
-            decreaseGauge = Mathf.Lerp(decreaseGauge, 3.5f, 0.2f * Time.deltaTime);
+            decreaseGauge = Mathf.Lerp(decreaseGauge, 4f, 0.3f * Time.deltaTime);
         }
         else
         {
@@ -105,11 +121,34 @@ public class HitGauge : MonoBehaviour
                 hitGaugeValue = MAX_GAUGE;
             }
 
-            int addScore = (int)(isFever ? ADD_SCORE * FEVER_ADD_RATIO : ADD_SCORE);
-            hitScore.AddScore(addScore);
+            if (isFever)
+            {
+                soundManager.PlaySFX("FeverPunchSFX");
+            }
+            else
+            {
+                soundManager.PlaySFX("NormalPunchSFX");
+            }
+            
+            hitThief.OnHit(isFever);
+            int addScore = (int) (isFever ? ADD_SCORE * FEVER_ADD_RATIO : ADD_SCORE);
+            hitScore.AddScore(addScore, isFever);
+            punchMotion.SetActive(true);
+            isPunch = true;
+            punchTime = Time.realtimeSinceStartup;
         }
     }
 
+    private float punchTime = 0;
+    private void PunchVFX()
+    {
+        if (Time.realtimeSinceStartup - punchTime >= 0.05f)
+        {
+            punchMotion.SetActive(false);
+            isPunch = false;
+        }
+    }
+    
     private void GaugeUpdate()
     {
         hitGaugeInImg.fillAmount = (float) hitGaugeValue / (float) MAX_GAUGE;

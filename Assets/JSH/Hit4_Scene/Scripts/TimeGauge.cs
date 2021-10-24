@@ -6,11 +6,17 @@ using UnityEngine.UI;
 
 public class TimeGauge : MonoBehaviour
 {
-    [SerializeField] Image timeGaugeImg;
+    private readonly int EMERGENCY_TIME = 5;
+    
     [SerializeField] private GameObject fadePanel;
     [SerializeField] private GameObject timeOverPanel;
     
+    [SerializeField] private Image timeGaugeImg;
+    
     [SerializeField] private Text curTimeText;
+
+    [SerializeField] private Color normalColor;
+    [SerializeField] private Color emergencyColor;
 
     private float curTime;
     private float maxTime;
@@ -19,10 +25,14 @@ public class TimeGauge : MonoBehaviour
 
     private bool isTimeOver = false;
 
+    private HitScore timeGauge;
+
     private void Start()
     {
         // 테스트 코드
         SetTime(15.0f);
+
+        timeGauge = FindObjectOfType<HitScore>();
     }
 
     private void Update()
@@ -48,6 +58,15 @@ public class TimeGauge : MonoBehaviour
             }
             else
             {
+                if (curTime <= EMERGENCY_TIME)
+                {
+                    timeGaugeImg.color = emergencyColor;
+                }
+                else
+                {
+                    timeGaugeImg.color = normalColor;
+                }
+                
                 curTime -= 0.1f;
                 curTimeText.text = ((int)curTime).ToString();
             }
@@ -87,6 +106,7 @@ public class TimeGauge : MonoBehaviour
     /// </summary>
     private void SceneEnd()
     {
+        GameSceneManager.GSM.SetTotalScore( GameSceneManager.GSM.GetTotalScore() + timeGauge.GetScore());
         GameSceneManager.GSM.SetHowManyWeLooped(GameSceneManager.GSM.GetHowManyWeLooped() + 1);
         GameSceneManager.GSM.LoadSceneAsync("Scene2");
         GameSceneManager.GSM.UnLoadSceneAsync("4_Hit");
