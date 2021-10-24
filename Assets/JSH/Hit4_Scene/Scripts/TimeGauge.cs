@@ -123,7 +123,7 @@ public class TimeGauge : MonoBehaviour
         }
         else
         {
-            GameSceneManager.GSM.LoadSceneAsync("5_GameScene");
+            GameSceneManager.GSM.LoadSceneAsync("5_GameOver");
             GameSceneManager.GSM.UnLoadSceneAsync("4_Hit");
         }
     }
